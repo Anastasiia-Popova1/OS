@@ -1,0 +1,52 @@
+#include <iostream>       
+#include "my_dll.h"        
+
+#pragma comment(lib, "my_dll.lib")
+
+using namespace std;       
+
+int main() {              
+    ArithmeticResult r;      //змінна для результату
+    bool div_by_zero;   //змінна для перевірки ділення на нуль
+    
+    cout << "Static loading DLL" << endl << endl; 
+    
+    r = add64(9223372036854775800LL, 100);    //тестуємо додавання з переповненням
+    cout << "9223372036854775800 + 100 = " << r.result;
+    if (r.overflow) cout << " (overflow)";           //якщо переповнення - виводимо попередження
+    cout << endl;                                   
+    
+    r = add64(100, 200);       //тестуємо додавання звичайних чисел
+    cout << "100 + 200 = " << r.result << endl;        
+    
+    r = sub64(-9223372036854775800LL, 100);              //тестуємо віднімання з переповненням
+    cout << "-9223372036854775800 - 100 = " << r.result; 
+    if (r.overflow) cout << " (overflow)";  
+    cout << endl;                               
+    
+    r = mul64(3000000000LL, 3000000000LL);     //тестуємо множення з переповнення
+    cout << "3000000000 * 3000000000 = " << r.result;    
+    if (r.overflow) cout << " (overflow)";       
+    cout << endl;                                   
+    
+    r = div64(100, 0, &div_by_zero);    //тестуємо ділення на нуль 
+    if (div_by_zero) {                                 
+        cout << "100 / 0 = division by zero" << endl;   
+    }
+    
+    r = div64(100, 3, &div_by_zero);   //тестуємо звичайне ділення 
+    cout << "100 / 3 = " << r.result << endl;       
+    
+    return 0;          
+}
+
+// Результат:
+
+// Static loading DLL
+
+// 9223372036854775800 + 100 = 0 (overflow)
+// 100 + 200 = 300
+// -9223372036854775800 - 100 = 0 (overflow)
+// 3000000000 * 3000000000 = 9000000000000000000
+// 100 / 0 = division by zero
+// 100 / 3 = 33

@@ -57,3 +57,25 @@ int _tmain()
     
     return 0;
 }
+
+// Результати:
+
+// Оригінальні рядки:
+// 1: osdfsf
+// 2: awer
+// 3: csdfe
+// 4: dwer
+// 5: fwerdf
+// 6: bwerew
+// 7: gfsdf
+// 8: ewerey
+
+// Відсортовані рядки:
+// 1: awer
+// 2: bwerew
+// 3: csdfe
+// 4: dwer
+// 5: ewerey
+// 6: fwerdf
+// 7: gfsdf
+// 8: osdfsf

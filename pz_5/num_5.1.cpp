@@ -46,8 +46,8 @@ int _tmain(int argc, TCHAR* argv[])
 {           
     #define TEST(a,b) _tprintf(_T("\"%s\" vs \"%s\" -> %s\n"), \
         (a)?(a):_T("NULL"), (b)?(b):_T("NULL"), \
-        (CompareDirectories(a,b)==DIRS_EQUAL)?_T("ОДНАКОВІ"): \
-        (CompareDirectories(a,b)==DIRS_NOT_EQUAL)?_T("РІЗНІ"):_T("ПОМИЛКА"))
+        (CompareDirectories(a,b)==DIRS_EQUAL)?_T("однакові"): \
+        (CompareDirectories(a,b)==DIRS_NOT_EQUAL)?_T("різні"):_T("помилка"))
     
     TEST(TEXT("C:\\Windows"), TEXT("C:\\Windows\\"));
     TEST(TEXT("C:\\Program Files"), TEXT("C:\\PROGRAM FILES\\"));
@@ -56,3 +56,10 @@ int _tmain(int argc, TCHAR* argv[])
     
     return 0;
 }
+
+// Результати:
+
+// "C:\Windows" vs "C:\Windows\" -> однакові
+// "C:\Program Files" vs "C:\PROGRAM FILES\" -> однакові
+// "D:\Temp" vs "D:\TempOld" -> різні
+// "NULL" vs "C:\Windows" -> помилка

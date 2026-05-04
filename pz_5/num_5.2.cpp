@@ -65,3 +65,29 @@ int _tmain(int argc, TCHAR* argv[])
     
     return 0;
 }
+
+// Результати:
+
+// Початковий масив:
+// bcsdf
+// Adfgkdf
+// gsdfpsdf
+// Cdfgkdfg
+// asddgk
+// Bddfgkdf
+
+// Після сортування (регістрозалежне сортування):
+// Adfgkdf
+// Bddfgkdf
+// Cdfgkdfg
+// asddgk
+// bcsdf
+// gsdfpsdf
+
+// Після сортування (регістронезалежне сортування):
+// Adfgkdf
+// asddgk
+// bcsdf
+// Bddfgkdf
+// Cdfgkdfg
+// gsdfpsdf
